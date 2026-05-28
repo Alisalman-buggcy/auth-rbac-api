@@ -56,7 +56,8 @@ git clone https://github.com/Alisalman-buggcy/auth-rbac-api.git
 cd auth-rbac-api
 
 2️⃣ Install dependencies
-npm install
+
+ npm install
 
 3️⃣ Setup database
 
@@ -73,9 +74,11 @@ CREATE TABLE users (
 );
 
 4️⃣ Run project
-npm run dev
 
-🔐 API Endpoints
+ npm run dev
+
+🔐 API Endpoints 
+
 Auth Routes
 Register
 POST /auth/register
@@ -97,6 +100,7 @@ Only accessible by:
 role = admin
 
 🔄 JWT Flow
+
 User logs in
 Server generates:
 Access Token (15m)
@@ -104,6 +108,7 @@ Refresh Token (7d)
 Access token used for protected route
 
 🛡️ Middleware
+
 Auth Middleware
 Verifies JWT token
 Attaches user to request
