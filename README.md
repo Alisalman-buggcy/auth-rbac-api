@@ -64,8 +64,11 @@ DB_NAME=mydb
 JWT_ACCESS_SECRET=super_access_secret_key_123
 JWT_REFRESH_SECRET=super_refresh_secret_key_456
 
+---
+---
 
-Installation & Setup
+## 👨‍💻 Installation & Setup
+
 1️⃣ Clone repository
 git clone https://github.com/Alisalman-buggcy/auth-rbac-api.git
 cd auth-rbac-api
