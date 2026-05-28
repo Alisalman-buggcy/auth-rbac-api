@@ -46,33 +46,14 @@ src/
 
 ---
 
-## ⚙️ Environment Variables
 
-Create a `.env` file in root:
-
-```env
-PORT=5001
-
-# PostgreSQL
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=password
-DB_NAME=mydb
-
-# JWT Secrets
-JWT_ACCESS_SECRET=super_access_secret_key_123
-JWT_REFRESH_SECRET=super_refresh_secret_key_456
-
----
----
 
 ## 👨‍💻 Installation & Setup
 
 1️⃣ Clone repository
 git clone https://github.com/Alisalman-buggcy/auth-rbac-api.git
 cd auth-rbac-api
-
+---
 2️⃣ Install dependencies
 npm install
 
@@ -129,6 +110,28 @@ Role Middleware
 Checks user role
 Blocks unauthorized access
 
+
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in root:
+
+```env
+PORT=5001
+
+# PostgreSQL
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=password
+DB_NAME=mydb
+
+# JWT Secrets
+JWT_ACCESS_SECRET=super_access_secret_key_123
+JWT_REFRESH_SECRET=super_refresh_secret_key_456
+
+---
+---
 
 👨‍💻 Author
 
