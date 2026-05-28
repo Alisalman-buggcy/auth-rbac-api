@@ -79,20 +79,31 @@ CREATE TABLE users (
 
 🔐 API Endpoints 
 
+
 Auth Routes
+
 Register
+
 POST /auth/register
+
 Login
+
 POST /auth/login
+
 User Routes
+
 Profile (Protected)
+
 GET /users/profile
 
 Headers:
 
 Authorization: Bearer <access_token>
+
 Admin Routes (RBAC)
+
 Admin Access
+
 GET /users/admin
 
 Only accessible by:
@@ -102,42 +113,31 @@ role = admin
 🔄 JWT Flow
 
 User logs in
+
 Server generates:
+
 Access Token (15m)
+
 Refresh Token (7d)
+
 Access token used for protected route
 
 🛡️ Middleware
 
 Auth Middleware
+
 Verifies JWT token
+
 Attaches user to request
+
 Role Middleware
+
 Checks user role
+
 Blocks unauthorized access
 
 
 
-## ⚙️ Environment Variables
-
-Create a `.env` file in root:
-
-```env
-PORT=5001
-
-# PostgreSQL
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=password
-DB_NAME=mydb
-
-# JWT Secrets
-JWT_ACCESS_SECRET=super_access_secret_key_123
-JWT_REFRESH_SECRET=super_refresh_secret_key_456
-
----
----
 
 👨‍💻 Author
 
