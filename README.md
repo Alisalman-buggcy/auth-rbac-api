@@ -51,9 +51,10 @@ src/
 ## 👨‍💻 Installation & Setup
 
 1️⃣ Clone repository
+
 git clone https://github.com/Alisalman-buggcy/auth-rbac-api.git
 cd auth-rbac-api
----
+
 2️⃣ Install dependencies
 npm install
 
