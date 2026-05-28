@@ -2,10 +2,7 @@ import { pool } from "../config/db";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const loginUser = async (
-  email: string,
-  password: string
-) => {
+export const loginUser = async (email: string, password: string) => {
   const user = await pool.query(
     "SELECT * FROM users WHERE email=$1",
     [email]
@@ -15,10 +12,13 @@ export const loginUser = async (
     throw new Error("User not found");
   }
 
-  console.log("USER FOUND");
+  // ✅ secure password check
+  const isMatch = await bcrypt.compare(
+    password,
+    user.rows[0].password
+  );
 
-  // TEMPORARY: plain password check
-  if (password !== user.rows[0].password) {
+  if (!isMatch) {
     throw new Error("Invalid password");
   }
 
@@ -27,23 +27,20 @@ export const loginUser = async (
     role: user.rows[0].role,
   };
 
-  console.log("ACCESS SECRET:", process.env.JWT_ACCESS_SECRET);
-  console.log("REFRESH SECRET:", process.env.JWT_REFRESH_SECRET);
+  if (!process.env.JWT_ACCESS_SECRET || !process.env.JWT_REFRESH_SECRET) {
+    throw new Error("JWT secrets missing");
+  }
 
   const accessToken = jwt.sign(
     payload,
-    process.env.JWT_ACCESS_SECRET || "fallback_secret",
-    {
-      expiresIn: "15m",
-    }
+    process.env.JWT_ACCESS_SECRET,
+    { expiresIn: "15m" }
   );
 
   const refreshToken = jwt.sign(
     payload,
-    process.env.JWT_REFRESH_SECRET || "fallback_refresh",
-    {
-      expiresIn: "7d",
-    }
+    process.env.JWT_REFRESH_SECRET,
+    { expiresIn: "7d" }
   );
 
   await pool.query(
